@@ -3,11 +3,11 @@
 .desk_case
   .label
     = link_to 'fetch case', fetch_desk_cases_path, remote: true
-  = select_tag :desk_case, desk_case_option(@desk_cases), {multiple: 'multiple', size: size}
+  = select_tag :desk_case, desk_case_option(@desk_cases), {multiple: 'multiple', size: 15}
 
 .desk_label
   .label
-    = link_to 'fetch label', '#'
-  = select_tag :desk_labels, desk_label_option(@desk_labels), {multiple: 'multiple', size: size}
+    = link_to 'fetch label', fetch_desk_labels_path, remote: true
+  = select_tag :desk_labels, desk_label_option(@desk_labels), {multiple: 'multiple', size: 15}
 .clear
 

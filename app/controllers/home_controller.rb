@@ -11,4 +11,14 @@ class HomeController < ApplicationController
       format.js
     end
   end
+
+
+  def fetch_desk_label
+    #@desk_labels = DeskCase.fetch_and_return
+    @desk_labels = DeskLabel.all
+    respond_to do |format|
+      format.js
+    end
+  end
+
 end

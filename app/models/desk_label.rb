@@ -6,6 +6,11 @@ class DeskLabel < ActiveRecord::Base
 
   include DeskApiV2
 
+  def self.fetch_and_return
+    sync_with_desk_api
+    all
+  end
+
   def self.sync_with_desk_api
     fetch_label_list.each do |desk_label|
       local_label = find_or_create_by_external_id desk_label[:external_id]
