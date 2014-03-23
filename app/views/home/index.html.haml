@@ -2,7 +2,7 @@
 - size = option_size(@desk_cases.size, @desk_labels.size)
 .desk_case
   .label
-    = link_to 'fetch case', '#'
+    = link_to 'fetch case', fetch_desk_cases_path, remote: true
   = select_tag :desk_case, desk_case_option(@desk_cases), {multiple: 'multiple', size: size}
 
 .desk_label

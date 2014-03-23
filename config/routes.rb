@@ -1,6 +1,9 @@
 DeskApi::Application.routes.draw do
   get "home/index"
   root 'home#index'
+  resources :desk_cases, only: [] do
+    get 'fetch_desk_case' => 'home#fetch_desk_case', as: :fetch, on: :collection
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

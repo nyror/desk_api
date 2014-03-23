@@ -5,6 +5,11 @@ class DeskCase < ActiveRecord::Base
 
   include DeskApiV2
 
+  def self.fetch_and_return
+    sync_with_desk_api
+    all
+  end
+
   def self.sync_with_desk_api
     #TODO this method should be trigger by resque scheduler
     #DeskLabel.sync_with_desk_api
