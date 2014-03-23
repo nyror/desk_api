@@ -13,7 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20140323131620) do
 
-  create_table "case_lable_relations", force: true do |t|
+  create_table "case_label_relations", force: true do |t|
     t.integer  "desk_case_id"
     t.integer  "desk_label_id"
     t.datetime "created_at"
