@@ -8,11 +8,29 @@ module DeskApiV2
 
   module ClassMethods
     def fetch_case_list
-      parse desk_access_token.get("#{desk_url}cases")
+      rs = parse desk_access_token.get("#{desk_url}cases")
+      rs['_embedded']['entries'].map do |desk_case|
+        local_case = HashWithIndifferentAccess.new
+        local_case[:external_id] = desk_case['id']
+        local_case[:headline] = desk_case['subject']
+        local_case[:status] = desk_case['status']
+        local_case[:desk_type] = desk_case['type']
+        local_case[:desk_labels] = desk_case['labels']
+        local_case
+      end
     end
 
     def fetch_label_list
-      parse desk_access_token.get("#{desk_url}labels")
+      rs = parse desk_access_token.get("#{desk_url}labels")
+      rs['_embedded']['entries'].map do |desk_label|
+        local_label = HashWithIndifferentAccess.new
+        local_label[:external_id] = desk_label['_links']['self']['href'][/\d+$/]
+        local_label[:name] = desk_label['name']
+        local_label[:enabled] = desk_label['enabled']
+        local_label[:desk_types] = desk_label['types']
+        local_label[:color] = desk_label['color']
+        local_label
+      end
     end
 
     def create_new_label options
