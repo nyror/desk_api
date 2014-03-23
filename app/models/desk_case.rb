@@ -17,9 +17,11 @@ class DeskCase < ActiveRecord::Base
           desk_type: desk_case[:desk_type]
         })
 
+        #while labels = [nil] means new labels in desk api
+        #and need to sync labels first
         labels = desk_case[:desk_labels].map do |desk_label|
           DeskLabel.find_by_name desk_label
-        end if desk_case[:desk_labels].present?
+        end.compact if (!desk_case[:desk_labels].nil? and desk_case[:desk_labels].respond_to?(:[]) )
 
         #updated case and label relation according to updated desk api
         #TODO sync will not delete label which has been deleted at local
