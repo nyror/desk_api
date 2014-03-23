@@ -1,4 +1,4 @@
-module DeskApi
+module DeskApiV2
   extend ActiveSupport::Concern
 
 
@@ -8,31 +8,32 @@ module DeskApi
 
   module ClassMethods
     def fetch_case_list
-      parse access_token.get("#{desk_url}cases")
+      parse desk_access_token.get("#{desk_url}cases")
     end
 
     def fetch_label_list
-      parse access_token.get("#{desk_url}labels")
+      parse desk_access_token.get("#{desk_url}labels")
     end
 
     def create_new_label options
-      access_token.post("#{desk_url}labels", options.to_json)
+      desk_access_token.post("#{desk_url}labels", options.to_json)
     end
 
     def delete_label desk_label
-      access_token.delete("#{desk_url}labels/#{desk_label.external_id}")
+      desk_access_token.delete("#{desk_url}labels/#{desk_label.external_id}")
     end
 
     def replace_case_label desk_case, desk_labels
-      access_token.put("#{desk_url}cases/#{desk_case.external_id}", {
+      desk_access_token.put("#{desk_url}cases/#{desk_case.external_id}", {
         label_action: 'replace',
         labels: desk_labels.pluck(:name)
       }.to_json)
     end
 
     private
-    def access_token
-      @access_token ||= DeskApi::Application.config.access_token
+    def desk_access_token
+      #@access_token ||= DeskApi::Application.config.access_token
+      DeskApi::Application.config.access_token
     end
 
     #TODO should be read from yaml config file
