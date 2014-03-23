@@ -1,13 +1,19 @@
 %h1 Home#index
 - size = option_size(@desk_cases.size, @desk_labels.size)
-.desk_case
-  .label
-    = link_to 'fetch case', fetch_desk_cases_path, remote: true
-  = select_tag :desk_case, desk_case_option(@desk_cases), {multiple: 'multiple', size: 15}
+.container
+  .desk_case
+    = render 'shared/desk_case', desk_cases: @desk_cases, size: size
 
-.desk_label
-  .label
-    = link_to 'fetch label', fetch_desk_labels_path, remote: true
-  = select_tag :desk_labels, desk_label_option(@desk_labels), {multiple: 'multiple', size: 15}
+  .desk_label
+    = render 'shared/desk_label', desk_labels: @desk_labels, size: size
+
+  .add_label
+    = form_tag create_label_path, remote: true do
+      = label_tag :q, 'add label'
+      .label
+        = text_field_tag :q
+      .label
+        = submit_tag 'Submit'
+  
 .clear
 

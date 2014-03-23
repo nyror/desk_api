@@ -1,3 +1,4 @@
 .label
   = link_to 'fetch case', fetch_desk_cases_path, remote: true
-= select_tag :desk_case, desk_case_option(desk_cases), {multiple: 'multiple', size: 16}
+- size ||= 16
+= select_tag :desk_case, desk_case_option(desk_cases), {multiple: 'multiple', size: size}

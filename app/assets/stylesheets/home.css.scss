@@ -2,12 +2,24 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.desk_case {
-  float: left;
-}
+.container {
+  padding: 5px 15px;
 
-.desk_label {
-  float: left;
+  .desk_case {
+    padding-right: 10px;
+    float: left;
+  }
+
+  .desk_label {
+    padding-right: 10px;
+    float: left;
+  }
+
+  .add_label {
+    float: left;
+    padding-top: 70px;
+  }
+
 }
 
 .clear {

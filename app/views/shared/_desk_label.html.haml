@@ -1,3 +1,4 @@
 .label
   = link_to 'fetch label', fetch_desk_labels_path, remote: true
-= select_tag :desk_labels, desk_label_option(desk_labels), {multiple: 'multiple', size: 16}
+- size ||= 16
+= select_tag :desk_labels, desk_label_option(desk_labels), {multiple: 'multiple', size: size}
