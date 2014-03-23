@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140323131620) do
+ActiveRecord::Schema.define(version: 20140323145313) do
 
   create_table "case_label_relations", force: true do |t|
     t.integer  "desk_case_id"
@@ -25,12 +25,14 @@ ActiveRecord::Schema.define(version: 20140323131620) do
     t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "external_id"
   end
 
   create_table "desk_labels", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "external_id"
   end
 
 end
