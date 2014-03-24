@@ -8,7 +8,7 @@ class DeskLabel < ActiveRecord::Base
 
   after_create { |record| DeskLabel.create_label({name: record.name})}
   before_destroy do|record|
-    #DeskLabel.sync_with_desk_api
+    DeskLabel.sync_with_desk_api
     DeskLabel.delete_label(record) if record.external_id.present?
   end
 

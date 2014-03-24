@@ -12,7 +12,7 @@ class DeskCase < ActiveRecord::Base
 
   def self.sync_with_desk_api
     #TODO this method should be trigger by resque scheduler
-    #DeskLabel.sync_with_desk_api
+    DeskLabel.sync_with_desk_api
     fetch_case_list.each do |desk_case|
       current_case = find_or_create_by_external_id desk_case[:external_id].to_s
       if current_case.present?
