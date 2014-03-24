@@ -21,6 +21,14 @@ class HomeController < ApplicationController
     @desk_labels = DeskLabel.all
   end
 
+  def find_labels
+    #binding.pry 
+    desk_label_ids = DeskCase.find(params[:id]).desk_labels.pluck(:id)
+    respond_to do |format|
+      format.json { render json: {id: desk_label_ids} }
+    end
+  end
+
   private
 
   def label_params

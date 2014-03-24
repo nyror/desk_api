@@ -8,6 +8,7 @@ DeskApi::Application.routes.draw do
   post 'desk_labels', to: 'home#create_label', as: :create_label
   resources :desk_labels, only: [] do
     get 'fetch_desk_label' => 'home#fetch_desk_label', as: :fetch, on: :collection
+    get 'find' => 'home#find_labels', as: :find, on: :member
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
