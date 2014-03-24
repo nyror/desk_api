@@ -18,7 +18,7 @@ as mention in requirement
 
 ![screen shot 2014-03-24 at 12 07 42 am](https://f.cloud.github.com/assets/83296/2495911/13882f6a-b30a-11e3-867c-f9b24d8273d2.png)
 
-
+![screen shot 2014-03-24 at 12 10 37 am](https://f.cloud.github.com/assets/83296/2495921/517535d4-b30a-11e3-866e-b33c8d91032f.png)
 #### RJS
 
 using rjs to fetch and replace
