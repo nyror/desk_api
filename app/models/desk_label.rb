@@ -20,7 +20,7 @@ class DeskLabel < ActiveRecord::Base
 
   def self.sync_with_desk_api
     fetch_label_list.each do |desk_label|
-      local_label = find_or_create_by_external_id desk_label[:external_id]
+      local_label = find_or_create_by_external_id desk_label[:external_id].to_s
       local_label.update_attributes({
         name: desk_label[:name],
         enabled: desk_label[:enabled],

@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20140323164726) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "case_label_relations", force: true do |t|
     t.integer  "desk_case_id"
     t.integer  "desk_label_id"
