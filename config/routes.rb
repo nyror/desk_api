@@ -9,6 +9,7 @@ DeskApi::Application.routes.draw do
   resources :desk_labels, only: [] do
     get 'fetch_desk_label' => 'home#fetch_desk_label', as: :fetch, on: :collection
     get 'find' => 'home#find_labels', as: :find, on: :member
+    post 'save_relation' => 'home#save_relation', as: :save, on: :collection
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

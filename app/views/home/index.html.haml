@@ -7,13 +7,15 @@
   .desk_label
     = render 'shared/desk_label', desk_labels: @desk_labels, size: size
 
-  .add_label
+  .edit_label
     = form_tag create_label_path, remote: true do
       = label_tag :name, 'add label'
       .label
         = text_field_tag 'desk_label[name]'
       .label
         = submit_tag 'Submit'
-  
+    .save_label
+      = link_to 'Save Relation', '#', id: 'save_label'
+
 .clear
 

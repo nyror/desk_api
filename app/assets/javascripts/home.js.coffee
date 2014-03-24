@@ -12,9 +12,28 @@ $(document).ready ->
       type: 'get',
       success: (data, textStatus, jqXHR) ->
         #debugger
-        #console.log(data)
         $('#desk_labels').val(data['id'])
-        #$.each data, (index, value) ->
-          #$("#desk_labels option[value=" + value + "]").attr("selected", "selected")
+        $('.save_label').fadeIn('slow')
+
+  $('#save_label').click (event)->
+    event.preventDefault
+    desk_case_id = $('#desk_case').val()[0]
+    desk_label_ids = $('#desk_labels').val()
+    dataToSend = {
+      desk_case_id: desk_case_id,
+      desk_label_ids: desk_label_ids
+    }
+    $.ajax
+      url: '/desk_labels/save_relation',
+      type: 'post',
+      data: dataToSend,
+      dataType: 'json',
+      success: (data, textStatus, jqXHR) ->
+        console.log(data)
+        $('.edit_label').append(data['text'])
+        #return false
+    return false
+
+
         
 
