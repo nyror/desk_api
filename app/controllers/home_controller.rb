@@ -41,6 +41,15 @@ class HomeController < ApplicationController
     end
   end
 
+  def delete_label
+    label_ids = params['desk_label_ids']
+    desk_labels = DeskLabel.where(id: label_ids)
+    desk_labels.destroy_all
+    respond_to do |format|
+      format.json {render json: {text: 'deleted successfull'}}
+    end
+  end
+
   private
 
   def label_params

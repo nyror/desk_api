@@ -17,13 +17,20 @@
 
   .edit_label {
     float: left;
-    padding-top: 45px;
+    padding-top: 35px;
+  }
+
+  .delete_label {
+    padding-top: 10px;
+    display: none;
   }
 
   .save_label {
-    padding-top: 20px;
+    padding-top: 10px;
     display: none;
   }
+
+
 
 }
 
