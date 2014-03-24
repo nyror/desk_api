@@ -1,4 +1,4 @@
-==== Desk Api Demo
+## Desk Api Demo
 
 demo: http://desk-api.herokuapp.com
 
