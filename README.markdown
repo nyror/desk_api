@@ -12,7 +12,29 @@ rails: 4.0.4
 
 ### outh for desk api
 
-as mention in requirement
+```ruby
+module DeskApiV2
+  extend ActiveSupport::Concern
+
+
+  included do
+    class_attribute :access_token
+  end
+
+  module ClassMethods
+    def fetch_case_list
+      rs = parse desk_access_token.get("#{desk_url}cases")
+      rs['_embedded']['entries'].map do |desk_case|
+        local_case = HashWithIndifferentAccess.new
+        local_case[:external_id] = desk_case['id']
+        local_case[:headline] = desk_case['subject']
+        local_case[:status] = desk_case['status']
+        local_case[:desk_type] = desk_case['type']
+        local_case[:desk_labels] = desk_case['labels']
+        local_case
+      end
+    end
+```
 
 #### drive by github issue
 
