@@ -33,7 +33,14 @@ module DeskApiV2
       end
     end
 
-    def create_new_label options
+    def create_label options
+      #response = access_token.post("https://lion.desk.com/api/v2/labels", 
+      # {
+      #   name: 'Test Label', 
+      #   description: 'no such thing', 
+      #   types: ['case', 'macro', 'article'], 
+      #   enable: true, color: 'orange'
+      # }.to_json)
       desk_access_token.post("#{desk_url}labels", options.to_json)
     end
 

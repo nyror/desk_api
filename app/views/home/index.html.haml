@@ -9,9 +9,9 @@
 
   .add_label
     = form_tag create_label_path, remote: true do
-      = label_tag :q, 'add label'
+      = label_tag :name, 'add label'
       .label
-        = text_field_tag :q
+        = text_field_tag 'desk_label[name]'
       .label
         = submit_tag 'Submit'
   
